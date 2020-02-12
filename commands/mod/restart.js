@@ -1,4 +1,4 @@
-const { owner_id, mod_ids, dnsStr, guild_id, music_id } = require('../../assets/config.json');
+const { music_id } = require('../../assets/config.json');
 module.exports = {
   name: 'restart',
   description: 'Restarts the bot',
@@ -14,7 +14,7 @@ module.exports = {
       await musicChan.leave();
       musicChan.join();
     } catch(err) {
-      Sentry.captureException(err)
+      Sentry.captureException(err);
     }
   },
 };

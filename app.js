@@ -72,6 +72,7 @@ try {
       msg.channel.fetchMessage(msg.id).then(msg => msg.delete()).catch(err => Sentry.captureException(err));
       return msg.author.send(reply);
     }
+    // Permission shit
     if (command.permission) {
       if (!mod_ids.includes(msg.member.id)) {
         if (msg.member.id != owner_id) {

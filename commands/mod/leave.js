@@ -1,4 +1,4 @@
-const { owner_id, mod_ids, dnsStr, guild_id, music_id } = require('../../assets/config.json');
+const { music_id } = require('../../assets/config.json');
 module.exports = {
   name: 'leave',
   description: 'Leaves the music channel',
@@ -13,7 +13,7 @@ module.exports = {
     try {
       musicChan.leave();
     } catch(err) {
-      Sentry.captureException(err)
+      Sentry.captureException(err);
     }
   },
 };
