@@ -1,0 +1,16 @@
+{
+  "name": "anotha-one",
+  "version": "1.0.0",
+  "description": "Music for you",
+  "main": "app.js",
+  "repository": "https://github.com/denizensofhell/anotha-one.git",
+  "author": "denizensofhell <al0363988@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@sentry/node": "^5.12.3",
+    "discord.js": "^11.5.1",
+    "junk": "^3.1.0",
+    "opusscript": "^0.0.7",
+    "ytdl-core": "^1.0.7"
+  }
+}
