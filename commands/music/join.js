@@ -1,4 +1,4 @@
-const { owner_id, mod_ids, dnsStr, guild_id, music_id } = require('./assets/config.json');
+const { owner_id, mod_ids, dnsStr, guild_id, music_id } = require('../../assets/config.json');
 module.exports = {
   name: 'join',
   description: 'Joins the music channel',
@@ -9,6 +9,6 @@ module.exports = {
   roles: [],
   guildOnly: true,
   execute: async (msg, args) => {
-    //Code here
+    console.log(msg);
   },
 };

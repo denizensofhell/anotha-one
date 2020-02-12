@@ -54,7 +54,7 @@ try {
     //Check for command
     if (!command) {
       msg.channel.fetchMessage(msg.id).then(msg => msg.delete()).catch(err => Sentry.captureException(err));
-      return msg.author.send(commandName + " is not a command. FYI `-` is the bots command flag.");
+      return msg.author.send(`\`${prefix}${commandName}\` is not a command. FYI \`${prefix}\` is my command flag.`);
     }
     //Check if guild
     if (command.guildOnly && msg.channel.type !== 'text') {
@@ -74,7 +74,7 @@ try {
     }
     //Made it here now execute the command
     try {
-      command.execute(msg, args, connection);
+      command.execute(msg, args);
     }
     catch (err) {
       Sentry.captureException(err);
