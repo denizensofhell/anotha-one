@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { TOKEN, owner_id, mod_ids, dnsStr, guild_id, music_id, prefix } = require('./assets/config.json');
+const { TOKEN, owner_id, mod_ids, dnsStr, guild_id, music_id, command_id, prefix } = require('./assets/config.json');
 const yt = require('ytdl-core');
 const fs = require('fs');
 const junk = require('junk');
@@ -40,7 +40,9 @@ try {
 
 try {
   client.on('message', msg => {
+    const channelSent = msg.channel.id;
     if (!msg.content.startsWith(prefix) || msg.author.bot) return;
+    if (channelSent != command_id) return wrongChannel(msg, channelSent);
 
     const args = msg.content.slice(prefix.length).split(/ +/);
     const commandName = args.shift().toLowerCase();
@@ -50,9 +52,13 @@ try {
         cmd => cmd.aliases && cmd.aliases.includes(commandName),
       );
     //Check for command
-    if (!command) return;
+    if (!command) {
+      msg.channel.fetchMessage(msg.id).then(msg => msg.delete()).catch(err => Sentry.captureException(err));
+      return msg.author.send(commandName + " is not a command. FYI `-` is the bots command flag.");
+    }
     //Check if guild
     if (command.guildOnly && msg.channel.type !== 'text') {
+      msg.channel.fetchMessage(msg.id).then(msg => msg.delete()).catch(err => Sentry.captureException(err));
       return msg.author.send('Global command only');
     }
     //Check for args
@@ -63,6 +69,7 @@ try {
           command.usage
         }\``;
       }
+      msg.channel.fetchMessage(msg.id).then(msg => msg.delete()).catch(err => Sentry.captureException(err));
       return msg.author.send(reply);
     }
     //Made it here now execute the command
@@ -76,6 +83,12 @@ try {
   });
 } catch(err) {
   Sentry.captureException(err);
+}
+
+function wrongChannel(msg) {
+  const blah = "I will only accept messges sent to #" + client.channels.get(command_id).name;
+  msg.channel.fetchMessage(msg.id).then(msg => msg.delete()).catch(err => Sentry.captureException(err));
+  msg.author.send(blah).then(console.log(msg.author.username + " is a dumbass")).catch(err => Sentry.captureException(err));
 }
 
 client.login(TOKEN);
