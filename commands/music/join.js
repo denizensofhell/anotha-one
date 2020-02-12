@@ -6,9 +6,14 @@ module.exports = {
   args: false,
   usage: '[]',
   permission: false,
-  roles: [],
   guildOnly: true,
-  execute: async (msg, args) => {
-    console.log(msg);
+  execute: async (msg, args, client, Sentry) => {
+    msg.channel.fetchMessage(msg.id).then(msg => msg.delete()).catch(err => Sentry.captureException(err));
+    const musicChan = client.channels.get(music_id);
+    try {
+      musicChan.join();
+    } catch(err) {
+      Sentry.captureException(err)
+    }
   },
 };

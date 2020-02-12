@@ -1,8 +1,8 @@
 const { owner_id, mod_ids, dnsStr, guild_id, music_id } = require('../../assets/config.json');
 module.exports = {
-  name: 'restart',
-  description: 'Restarts the bot',
-  aliases: ['r'],
+  name: 'leave',
+  description: 'Leaves the music channel',
+  aliases: ['l'],
   args: false,
   usage: '[]',
   permission: true,
@@ -11,8 +11,7 @@ module.exports = {
     msg.channel.fetchMessage(msg.id).then(msg => msg.delete()).catch(err => Sentry.captureException(err));
     const musicChan = client.channels.get(music_id);
     try {
-      await musicChan.leave();
-      musicChan.join();
+      musicChan.leave();
     } catch(err) {
       Sentry.captureException(err)
     }

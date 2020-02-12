@@ -72,9 +72,17 @@ try {
       msg.channel.fetchMessage(msg.id).then(msg => msg.delete()).catch(err => Sentry.captureException(err));
       return msg.author.send(reply);
     }
+    if (command.permission) {
+      if (msg.member.id.includes(mod_ids)) {
+        if (msg.member.id != owner_id) {
+          msg.channel.fetchMessage(msg.id).then(msg => msg.delete()).catch(err => Sentry.captureException(err));
+          return msg.author.send("You do not have the permissions for this. How tf do you know this command?");
+        }
+      }
+    }
     //Made it here now execute the command
     try {
-      command.execute(msg, args);
+      command.execute(msg, args, client, Sentry);
     }
     catch (err) {
       Sentry.captureException(err);
