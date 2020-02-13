@@ -87,7 +87,7 @@ try {
     }
     catch (err) {
       Sentry.captureException(err);
-      msg.author.send('Something went wrong. Try again later');
+      return msg.author.send('Something went wrong. Try again later');
     }
   });
 } catch(err) {
