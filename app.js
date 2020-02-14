@@ -54,7 +54,8 @@ try {
     //Check for command
     if (!command) {
       msg.channel.fetchMessage(msg.id).then(msg => msg.delete()).catch(err => Sentry.captureException(err));
-      return msg.author.send(`\`${prefix}${commandName}\` is not a command. FYI \`${prefix}\` is my command flag.`);
+      // return msg.author.send(`\`${prefix}${commandName}\` is not a command. FYI \`${prefix}\` is my command flag.`); THIS IS GOOD BUT NOT HERE
+      return;
     }
     //Check if guild
     if (command.guildOnly && msg.channel.type !== 'text') {

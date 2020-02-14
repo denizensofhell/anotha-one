@@ -20,6 +20,15 @@ module.exports = {
     const songUrls = addSong.queueObj.songUrls;
     const userNames = addSong.queueObj.userNames;
 
+    if(msg.guild.voiceConnection != null && msg.guild.voiceConnection.dispatcher.paused) {
+      try {
+        msg.guild.voiceConnection.dispatcher.resume(); 
+      } catch (error) {
+        return Sentry.captureException(err);
+      }
+      return;
+    }
+
     musicChan.join().then(connection => {play(connection);}).catch(err => Sentry.captureException(err));
 
     function play(connection) {
