@@ -11,9 +11,9 @@ module.exports = {
     msg.channel.fetchMessage(msg.id).then(msg => msg.delete()).catch(err => Sentry.captureException(err));
     const musicChan = client.channels.get(music_id);
     const server = client.guilds.get(guild_id);
-    const foo = server.voiceConnection;
+    const joined = server.voiceConnection;
 
-    if(foo) return msg.author.send(`I have already joined ${musicChan.name}`);
+    if(joined) return msg.author.send(`I have already joined ${musicChan.name}`);
     try {
       musicChan.join();
     } catch(err) {

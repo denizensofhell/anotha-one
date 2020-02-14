@@ -13,14 +13,14 @@ module.exports = {
   guildOnly: true,
   queueObj: {
     songUrls: [],
-    userName: []
+    userNames: []
   },
   execute (msg, args, client, Sentry) { 
     msg.channel.fetchMessage(msg.id).then(msg => msg.delete()).catch(err => Sentry.captureException(err));
     const songUrl = args[0];
     const userName = msg.author.username;
     this.queueObj.songUrls.push(songUrl);
-    this.queueObj.userName.push(userName);
+    this.queueObj.userNames.push(userName);
 
     let that = this;
 
@@ -54,11 +54,10 @@ module.exports = {
           .setThumbnail(thumbnailUrl)
           .addField('Length', songLength, true)
           .addField('Queue', `Your song is up in ${queueNumber - 1} song(s)`, true);
-        msg.channel.send(embed)
+        return msg.channel.send(embed)
       } catch(err) {
         Sentry.captureException(err)
       }
     }
-    console.log(this.queueObj);
   },
 }
