@@ -1,8 +1,8 @@
 const { music_id } = require('../../assets/config.json');
 module.exports = {
-  name: 'restart',
+  name: 'mrestart',
   description: 'Restarts the bot',
-  aliases: ['r'],
+  aliases: ['mr'],
   args: false,
   usage: '[]',
   permission: true,
