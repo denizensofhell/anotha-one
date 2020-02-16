@@ -102,3 +102,4 @@ function wrongChannel(msg) {
 }
 
 client.login(TOKEN);
+//( ಠ_ಠ)
