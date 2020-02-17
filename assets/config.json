@@ -1,10 +1,10 @@
 {
-  "TOKEN" : "NjcyNjQwNjM3OTI4OTk2ODc0.XkNW7g.v68JKWeYYB3JKutgM_JCxf8kSi0",
-  "owner_id" : "385263715613802498",
-  "mod_ids" : ["417128187458224129", "652657314733621249"],
-  "dnsStr" : "https://7fcb0a1736cf4f99b3e13ace4234506a@sentry.io/2451603",
-  "guild_id" : "516421539378233344",
-  "music_id" : "522645361479647232",
-  "command_id" : "675779068347547715",
+  "TOKEN" : "TOKEN",
+  "owner_id" : "BOT_OWNER_ID",
+  "mod_ids" : ["MOD_IDS", "MOD_IDS"],
+  "dnsStr" : "SENTRY_SHIT",
+  "guild_id" : "SERVER_ID/GUILD_ID",
+  "music_id" : "MUSIC_CHANNEL_ID",
+  "command_id" : "COMMAND_CHANNEL_ID",
   "prefix" : "-"
 }
