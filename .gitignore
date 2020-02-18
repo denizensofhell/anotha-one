@@ -3,3 +3,4 @@ node_modules
 .eslintrc.json
 .vscode
 assets/config.json
+commands/dev/
