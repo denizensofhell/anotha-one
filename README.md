@@ -1,2 +1,2 @@
 # anotha-one
-He plays the music
+Pair programming / brain storm / fucking around
